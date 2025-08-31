@@ -35,7 +35,16 @@ def private_panel(_):
             )
         ],
         [
+            InlineKeyboardButton(
+                text=_["S_B_1"], url=f"https://telegra.ph/FFcg-08-31"
+            ),   
+
+            InlineKeyboardButton(text="new Fe Command", url=f"https://telegra.ph/FFcg-08-31"),
+        ],
+        
+        [
             InlineKeyboardButton(text=_["ST_B_3"], callback_data="LG"),
         ],
+        
     ]
     return buttons
