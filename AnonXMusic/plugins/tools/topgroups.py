@@ -18,7 +18,7 @@ from AnonXMusic.utils.database import (
 from AnonXMusic.utils.decorators.language import language
 from config import BANNED_USERS
 
-@app.on_message(filters.command(["topgc", "topgroups"]) & ~BANNED_USERS)
+@app.on_message(filters.command(["rankinggroups" "topgc", "topgroups"]) & ~BANNED_USERS)
 @language
 async def top_groups_command(client, message: Message, _):
     """Show top 10 groups by song requests"""
@@ -101,20 +101,20 @@ async def top_groups_command(client, message: Message, _):
             else:
                 emoji = f"<b>{i}.</b>"
             
-            text += f"{emoji} {group_link}\n"
+            text += f"{emoji} {group_link}\n\n"
             text += f"    ├ <b>🎵 Requests:</b> <code>{total_requests:,}</code>\n"
-            text += f"    ├ <b>🎤 Last Song:</b> <code>{last_query_escaped}</code>\n"
+            # text += f"    ├ <b>🎤 Last Song:</b> <code>{last_query_escaped}</code>\n"
             text += f"    └ <b>⏰ Last Active:</b> <code>{time_str}</code>\n\n"
         
         # Add footer
         try:
             total_served = len(await get_served_chats())
-            text += f"<b>📈 Total Served Groups:</b> <code>{total_served:,}</code>\n"
+            text += f"<b>📈 Total Served Groups:</b> <code>{total_served:,}</code>\n\n"
         except:
-            text += f"<b>📈 Active Groups:</b> <code>{len(top_groups)}</code>\n"
+            text += f"<b>📈 Active Groups:</b> <code>{len(top_groups)}</code>\n\n"
         
-        text += f"<b>🔄 Updated:</b> <code>{datetime.now().strftime('%d/%m/%Y %H:%M')}</code>\n"
-        text += f"<b>💡 Tip:</b> Use <code>/check &lt;chat_id&gt;</code> to check specific group stats</blockquote>"
+        # text += f"<b>🔄 Updated:</b> <code>{datetime.now().strftime('%d/%m/%Y %H:%M')}</code>\n"
+        # text += f"<b>💡 Tip:</b> Use <code>/check &lt;chat_id&gt;</code> to check specific group stats</blockquote>"
         
         # Send the ranking
         await msg.edit_text(text, parse_mode=ParseMode.HTML, disable_web_page_preview=False)
@@ -228,7 +228,7 @@ async def check_group_command(client, message: Message, _):
         text += f"<b>👑 Top User ID:</b> <code>{top_user_id}</code> (<code>{top_user_requests}</code> requests)\n\n"
         text += f"<b>🎤 Last Song:</b> <code>{last_query_escaped}</code>\n"
         text += f"<b>⏰ Last Request:</b> <code>{time_str}</code>\n\n"
-        text += f"<b>🔄 Checked:</b> <code>{datetime.now().strftime('%d/%m/%Y %H:%M')}</code></blockquote>"
+        # text += f"<b>🔄 Checked:</b> <code>{datetime.now().strftime('%d/%m/%Y %H:%M')}</code></blockquote>"
         
         await msg.edit_text(text, parse_mode=ParseMode.HTML, disable_web_page_preview=False)
         
