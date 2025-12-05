@@ -14,8 +14,9 @@ from pytgcalls.types import Update, StreamEnded
 from pytgcalls import filters as fl
 from pytgcalls.types import AudioQuality, VideoQuality
 from pytgcalls.types import MediaStream,ChatUpdate
-from AnonXMusic.utils.stream.autoclear import auto_clean
+
 import config
+from config import autoclean
 from AnonXMusic import LOGGER, YouTube, app
 from AnonXMusic.misc import db
 from AnonXMusic.utils.database import (
@@ -35,7 +36,6 @@ from AnonXMusic.utils.formatters import check_duration, seconds_to_min, speed_co
 from AnonXMusic.utils.inline.play import stream_markup
 from AnonXMusic.utils.thumbnails import get_thumb
 from strings import get_string
-from AnonXMusic.platforms.Youtube import cookie_txt_file
 
 autoend = {}
 counter = {}
@@ -297,6 +297,11 @@ class Call(PyTgCalls):
                 link,
                 audio_parameters=AudioQuality.HIGH,video_parameters=VideoQuality.SD_480p
                 )
+            # stream = AudioVideoPiped(
+            #     link,
+            #     audio_parameters=HighQualityAudio(),
+            #     video_parameters=MediumQualityVideo(),
+            # )
         else:
             stream = (
                 MediaStream(
@@ -313,6 +318,11 @@ class Call(PyTgCalls):
                 chat_id,
                 stream
             )
+            # await assistant.join_group_call(
+            #     chat_id,
+            #     stream,
+            #     stream_type=StreamType().pulse_stream,
+            # )
         except NoActiveGroupCall:
             raise AssistantErr(_["call_8"])
         except AlreadyJoinedError:
@@ -340,7 +350,8 @@ class Call(PyTgCalls):
                 loop = loop - 1
                 await set_loop(chat_id, loop)
             if popped:
-                await auto_clean(popped)
+                rem = popped["file"]
+                autoclean.remove(rem)
             if not check:
                 await _clear_(chat_id)
                 return await client.leave_call(chat_id)
@@ -394,7 +405,7 @@ class Call(PyTgCalls):
                         original_chat_id,
                         text=_["call_6"],
                     )
-                img = await get_thumb(videoid)
+                img = await get_thumb(videoid,user_id)
                 button = stream_markup(_, chat_id)
                 run = await app.send_photo(
                     chat_id=original_chat_id,
@@ -441,7 +452,7 @@ class Call(PyTgCalls):
                         original_chat_id,
                         text=_["call_6"],
                     )
-                img = await get_thumb(videoid)
+                img = await get_thumb(videoid,user_id)
                 button = stream_markup(_, chat_id)
                 await mystic.delete()
                 run = await app.send_photo(
@@ -530,7 +541,7 @@ class Call(PyTgCalls):
                     db[chat_id][0]["mystic"] = run
                     db[chat_id][0]["markup"] = "tg"
                 else:
-                    img = await get_thumb(videoid)
+                    img = await get_thumb(videoid,user_id)
                     button = stream_markup(_, chat_id)
                     run = await app.send_photo(
                         chat_id=original_chat_id,
