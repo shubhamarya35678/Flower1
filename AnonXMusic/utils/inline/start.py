@@ -32,6 +32,7 @@ def private_panel(_):
             #InlineKeyboardButton(text="New Feacture", url=f"https://telegra.ph/New-Features-08-31"),
         ], 
         [
+InlineKeyboardButton(text="Owner", url=f"https://t.me/innocent_xd_babe"),
 InlineKeyboardButton(text="Updates", url=f"https://t.me/TgMusicBots"),
         ], 
         [
