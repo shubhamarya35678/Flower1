@@ -55,10 +55,10 @@ def stream_markup_timer(_, chat_id, played, dur):
             )
         ],
         [
-            InlineKeyboardButton(text="◁ 20s", callback_data=f"seekback {chat_id} 20"),            #InlineKeyboardButton(text="10s", callback_data=f"seekback {chat_id} 10"),
+            InlineKeyboardButton(text="⪻-𝟸𝟶", callback_data=f"seekback {chat_id} 𝟸𝟶"),            #InlineKeyboardButton(text="10s", callback_data=f"seekback {chat_id} 10"),
                         InlineKeyboardButton(text="↻", callback_data=f"ADMIN Replay|{chat_id}"),
             #InlineKeyboardButton(text="10s", callback_data=f"seek {chat_id} 10"),
-            InlineKeyboardButton(text="20s ▷", callback_data=f"seek {chat_id} 20"),
+            InlineKeyboardButton(text="+𝟸𝟶⪼", callback_data=f"seek {chat_id} 𝟸𝟶"),
         ],
         [
             InlineKeyboardButton(text=_["CLOSE_BUTTON"], callback_data="close"),
