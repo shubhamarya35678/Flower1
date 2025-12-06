@@ -28,7 +28,7 @@ def private_panel(_):
             )
         ],
         [
-            InlineKeyboardButton(text="Help", callback_data="settings_back_helper"),
+            InlineKeyboardButton(text="Help & Commond", callback_data="settings_back_helper"),
             #InlineKeyboardButton(text="New Feacture", url=f"https://telegra.ph/New-Features-08-31"),
         ], 
         [
