@@ -12,7 +12,7 @@ API_HASH = getenv("API_HASH")
 
 
 YTPROXY_URL = getenv("YTPROXY_URL", 'https://tgapi.xbitcode.com') ## E.G https://yt.okflix.
-YT_API_KEY = getenv("YT_API_KEY", "xbit_Z40UQMGPMUSLT99508XYKG")#+&&_
+YT_API_KEY = getenv("YT_API_KEY", "xbit_5XPDepHjxDvpJF61UzDUchuu5Cplprol"")#+&&_
 
 # Get your token from @BotFather on Telegram.
 BOT_TOKEN = getenv("BOT_TOKEN")
