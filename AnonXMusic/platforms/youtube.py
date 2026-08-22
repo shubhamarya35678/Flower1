@@ -22,8 +22,8 @@ from py_yt import Playlist, VideosSearch
 from pyrogram.enums import MessageEntityType
 from pyrogram.types import Message
 
-from anony import config, logger
-from anony.helpers import utils
+from AnonXMusic import config, logger
+from AnonXMusic.helpers import utils
 
 # ── Config ────────────────────────────────────────────────────────────────────
 SHRUTI_API_URL  = getattr(config, "SHRUTI_API_URL",  "https://api.shrutibots.site")
