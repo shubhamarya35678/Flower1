@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-class Config:
+class Config.py:
     def __init__(self):
         self.API_ID = int(getenv("API_ID", 0))
         self.API_HASH = getenv("API_HASH")
